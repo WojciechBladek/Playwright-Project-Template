@@ -1,0 +1,7 @@
+package-lock.json
+playwright-report
+test-results
+eslint.config.mjs
+pipelines
+*/tmp
+*/.md

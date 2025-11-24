@@ -1,0 +1,81 @@
+trigger:
+  - none
+pr:
+  - none
+pool:
+  vmImage: "ubuntu-latest"
+variables:
+  - group: "automation-test"
+  - name: PLAYWRIGHT_BROWSERS_PATH
+    value: $(Pipeline.Workspace)/.playwright
+
+parameters:
+  - name: env
+    displayName: "Environment"
+    type: string
+    default: "uat"
+    values:
+      - "uat"
+
+  - name: test
+    displayName: "Set test"
+    type: string
+    default: "test1.spec.ts"
+    values:
+      - "test1.spec.ts"
+      - "test2.spec.ts"
+
+steps:
+  - task: UseNode@1
+    inputs:
+      version: "22"
+      checkLatest: true
+    displayName: "Install Node.js"
+
+  - script: |
+      echo "##vso[task.setvariable variable=packageLockHash]$(sha256sum package-lock.json | cut -d' ' -f1)"
+    displayName: "Calculate package-lock.json hash"
+
+  - task: Cache@2
+    inputs:
+      key: 'playwright | "$(Agent.OS)" | $(packageLockHash)'
+      restoreKeys: |
+        playwright | "$(Agent.OS)" | $(packageLockHash)
+      path: $(PLAYWRIGHT_BROWSERS_PATH)
+    displayName: Cache Playwright browsers
+
+  - script: npm ci
+    displayName: "Install dependencies"
+
+  - script: |
+      if [ -z "$(ls -A $(PLAYWRIGHT_BROWSERS_PATH))" ]; then
+      echo "Playwright browsers not found in cache. Installing..."
+      npx playwright install --with-deps
+      else
+      echo "Playwright browsers found in cache. Skipping installation."
+      fi
+    displayName: "Install Playwright browsers (only if needed)"
+    env:
+      PLAYWRIGHT_BROWSERS_PATH: $(PLAYWRIGHT_BROWSERS_PATH)
+    condition: always()
+
+  - script: |
+      npx cross-env ENVIRONMENT=${{ parameters.env }} npx playwright test ${{ parameters.test }} --project=Chrome --workers=1
+    displayName: "Execute Playwright tests"
+    env:
+      PLAYWRIGHT_BROWSERS_PATH: $(PLAYWRIGHT_BROWSERS_PATH)
+      USER_LOGIN: $(USER_LOGIN)
+      USER_PASSWORD: $(USER_PASSWORD)
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: "$(System.DefaultWorkingDirectory)/playwright-report"
+      artifactName: "HTML Test Report for System Integration tests ${{ parameters.env }}"
+    displayName: "Publish HTML Report"
+    condition: succeededOrFailed()
+
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFormat: "JUnit"
+      testResultsFiles: "**/xml_test_report.xml"
+      searchFolder: "$(System.DefaultWorkingDirectory)"
+    condition: succeededOrFailed()
