@@ -1,7 +1,7 @@
-/* eslint-disable no-console */
 import { BASE_API_URL } from '@_config/env.config';
 import Logger from '@_logger/Logger';
 import { RequestHeaders } from '@_source/api/models/headers.api.model';
+import { stringifyJsonData } from '@_source/utils/json-handler.util';
 import TestAgent from 'node_modules/@types/supertest/lib/agent';
 import { Response, default as request } from 'supertest';
 
@@ -43,9 +43,9 @@ export class BaseSuperTest {
       })
       .on('response', (response: Response) => {
         if (response.statusCode >= 400) {
-          console.log('HEADERS: ', response.headers);
-          console.log('STATUS: ', response.status);
-          console.log('BODY: ', response.body);
+          Logger.error(`HEADERS: ${stringifyJsonData(response.headers)}`);
+          Logger.error(`STATUS: ${stringifyJsonData(response.status)}`);
+          Logger.error(`BODY: ${stringifyJsonData(response.body)}`);
         }
       });
 
@@ -81,11 +81,11 @@ export class BaseSuperTest {
       })
       .on('response', (response: Response) => {
         if (response.statusCode >= 400) {
-          console.log('HEADERS: ', response.headers);
-          console.log('STATUS: ', response.status);
-          console.log('BODY: ', response.body);
+          Logger.error(`HEADERS: ${stringifyJsonData(response.headers)}`);
+          Logger.error(`STATUS: ${stringifyJsonData(response.status)}`);
+          Logger.error(`BODY: ${stringifyJsonData(response.body)}`);
           if (payload) {
-            console.log('Payload: ', payload);
+            Logger.error(`Payload: ${stringifyJsonData(payload)}`);
           }
         }
       });
