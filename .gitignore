@@ -6,7 +6,7 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
-*env.local
+# uncomment on real project *env.local
 *.log
 xml_test_report.xml
 tmp/*.json

@@ -10,14 +10,16 @@ export class BasePage {
     this.url = '/';
   }
 
-  async goto(parameters = ''): Promise<void> {
+  async goto(waitForUrl?: string): Promise<void> {
     await this.page.context().clearCookies();
     await this.handleCookies();
 
-    await this.page.goto(`${this.url}${parameters}`);
+    await this.page.goto(this.url);
     await this.removeCookieFromDom();
 
-    await this.waitForPageToLoadUrl(`${this.url}${parameters}`);
+    if (waitForUrl) {
+      await this.waitForPageToLoadUrl(waitForUrl);
+    }
   }
 
   async handleCookies(): Promise<void> {
@@ -72,12 +74,12 @@ export class BasePage {
     return await this.page.title();
   }
 
-  async waitForPageToLoadUrl(url = this.url): Promise<void> {
+  async waitForPageToLoadUrl(expectedPath: string): Promise<void> {
     try {
-      await this.page.waitForURL(url, { timeout: 10_000 });
+      await this.page.waitForURL(expectedPath, { timeout: 20_000 });
     } catch (e) {
       Logger.warn(
-        `Url after navigation was "${this.page.url()}" but should contain "${url}", error: ${e}`
+        `Url after navigation was "${this.page.url()}" but should contain "${expectedPath}", error: ${e}`
       );
     }
   }

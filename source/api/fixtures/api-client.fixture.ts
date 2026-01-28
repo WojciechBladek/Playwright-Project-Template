@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { LoginUserModelApi } from '@_source/api/models/login.api.model';
 import { BaseRequest } from '@_source/api/requests/base-request';
-import { getAuthorizationHeader } from '@_source/api/utils/generate-token.util';
+import { getAuthorizationRequest } from '@_source/api/utils/generate-token.util';
 import { test as base } from '@playwright/test';
 
 /** 
@@ -25,20 +25,24 @@ type Constructor<T> = new (...args: any[]) => T;
 
 export const apiClientTest = base.extend<{
   apiClient: <T extends BaseRequest>(
-    loginData: LoginUserModelApi,
     classRef: Constructor<T>,
+    loginData?: LoginUserModelApi,
     baseUrl?: string
   ) => Promise<T>;
 }>({
   apiClient: async ({ request }, use) => {
     const apiFactory = async <T extends BaseRequest>(
-      loginData: LoginUserModelApi,
       classRef: Constructor<T>,
+      loginData?: LoginUserModelApi,
       baseUrl?: string
     ): Promise<T> => {
-      const token = await getAuthorizationHeader(loginData);
+      let requestApi = request;
 
-      const instance = new classRef(request, token);
+      if (loginData) {
+        requestApi = await getAuthorizationRequest(loginData);
+      }
+
+      const instance = new classRef(requestApi);
 
       if (baseUrl) {
         instance.url = baseUrl; //* Example how to set another base api url in fixture

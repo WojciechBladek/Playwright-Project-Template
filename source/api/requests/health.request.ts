@@ -11,8 +11,6 @@ export class HealthRequest extends BaseRequest {
   }
 
   async get(): Promise<APIResponse> {
-    return await this.request.get(this.url, {
-      headers: this.token
-    });
+    return await this.request.get(this.url);
   }
 }

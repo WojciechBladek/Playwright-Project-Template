@@ -1,5 +1,5 @@
 import { API_TOKEN_PATH } from '@_pw-config';
-import { RequestHeaders } from '@_source/api/models/headers.api.model';
+import { APIRequestContext, request as newRequest } from '@playwright/test';
 import * as fs from 'fs';
 
 /*
@@ -30,7 +30,19 @@ export function GET_API_TOKEN(path: string): string | undefined {
 
 // Example of use in source/api/fixtures/request-object.fixture.ts
 export const getApiTokenFromFile = {
-  get AuthorizationHeader(): RequestHeaders {
-    return { Authorization: GET_API_TOKEN(API_TOKEN_PATH) };
+  async AuthorizationRequest(): Promise<APIRequestContext> {
+    const token = GET_API_TOKEN(API_TOKEN_PATH);
+
+    if (!token) {
+      throw new Error('Token was not generated, checkout file with token');
+    }
+
+    const request = await newRequest.newContext({
+      extraHTTPHeaders: {
+        Authorization: token
+      }
+    });
+
+    return request;
   }
 };

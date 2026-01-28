@@ -4,6 +4,6 @@ export interface RegisterUserModelApi {
 }
 
 export interface LoginUserModelApi {
-  userEmail: string;
-  userPassword: string;
+  username: string;
+  password: string;
 }

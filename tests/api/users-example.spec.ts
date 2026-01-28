@@ -1,5 +1,5 @@
 import Logger from '@_logger/Logger';
-import { LoginModelUi } from '@_source/UI/models/user.model';
+import { LoginUserModelApi } from '@_source/api/models/login.api.model';
 import { UserRequest } from '@_source/api/requests/user.request';
 import { testUser1_Api, testUser2_Api } from '@_source/api/test-data/user.data';
 import { expect, test } from '@_source/merge.fixture';
@@ -46,32 +46,46 @@ test.describe(
 
     test(
       'Get userMe - non-logged',
-      { tag: ['@API', '@USERS'] },
-      async ({ userRequest }) => {
+      { tag: ['@API', '@USERS', '@NON-LOGGED'] },
+      async ({ request }) => {
         // Arrange
-        userRequest.token = undefined; //* set headers as undefined to simulate not being logged in
+        const userRequest = new UserRequest(request);
 
         // Act
         const response = await userRequest.getUserMe();
 
         // Assert
-        await expect
-          .soft(response, 'Account should be not authorized')
-          .not.toBeOK();
+        expect
+          .soft(response.status(), 'Account should be not authorized')
+          .toEqual(401);
       }
     );
 
-    const usersData: LoginModelUi[] = [testUser1_Api, testUser2_Api];
+    test(
+      'Get userMe - logged',
+      { tag: ['@API', '@USERS', '@LOGGED'] },
+      async ({ userRequest }) => {
+        // Act
+        const response = await userRequest.getUserMe();
+
+        // Assert
+        expect
+          .soft(response.status(), 'Account should be authorized')
+          .toEqual(200);
+      }
+    );
+
+    const usersData: LoginUserModelApi[] = [testUser1_Api, testUser2_Api];
     for (const user of usersData) {
       test(
-        `Verify user "${user.userEmail}" - role privileges`,
+        `Verify user "${user.username}" - role privileges`,
         { tag: ['@API', '@USERS', '@ROLES'] },
         async ({ apiClient }) => {
           // Arrange
-          Logger.info(`Verify priviligies for user: ${user.userEmail}`);
+          Logger.info(`Verify priviligies for user: ${user.username}`);
           const expectedKeys = ['id', 'firstName', 'lastName', 'age'];
 
-          const userRequest = await apiClient<UserRequest>(user, UserRequest);
+          const userRequest = await apiClient(UserRequest, user);
 
           // Act
           const response = await userRequest.getAllUsers();
