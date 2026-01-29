@@ -1,3 +1,4 @@
+import { BASE_API_URL } from '@_config/env.config';
 import { API_TOKEN_PATH } from '@_pw-config';
 import { APIRequestContext, request as newRequest } from '@playwright/test';
 import * as fs from 'fs';
@@ -38,6 +39,7 @@ export const getApiTokenFromFile = {
     }
 
     const request = await newRequest.newContext({
+      baseURL: BASE_API_URL,
       extraHTTPHeaders: {
         Authorization: token
       }

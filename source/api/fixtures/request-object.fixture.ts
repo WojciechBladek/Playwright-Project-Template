@@ -15,7 +15,6 @@ export const requestObjectTest = baseTest.extend<Requests>({
     // const request = await getApiTokenFromFile.AuthorizationRequest(); //* Example of use get-token-from-file.util.ts
 
     const userRequest = new UserRequest(request);
-    //userRequest.url = ANOTHER_BASE_API_URL //* Example how to set another base api url in fixture
 
     await use(userRequest);
   },

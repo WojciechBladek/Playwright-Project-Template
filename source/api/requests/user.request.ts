@@ -1,4 +1,5 @@
 import { BaseRequest } from '@_source/api/requests/base-request';
+import { apiErrorHandler } from '@_source/api/utils/api-error-handler.util';
 import { apiEndpoints } from '@_source/api/utils/endpoints.util';
 import { APIRequestContext, APIResponse } from '@playwright/test';
 
@@ -8,18 +9,30 @@ export class UserRequest extends BaseRequest {
   }
 
   async getAllUsers(): Promise<APIResponse> {
-    return await this.request.get(this.url + apiEndpoints.usersUrl);
+    const response = await this.request.get(apiEndpoints.usersUrl);
+
+    await apiErrorHandler(response, 'Get all users request failed');
+
+    return response;
   }
 
   async getUser(userId: string): Promise<APIResponse> {
-    return await this.request.get(
-      this.url + apiEndpoints.usersUrl + `/${userId}`
+    const response = await this.request.get(
+      apiEndpoints.usersUrl + `/${userId}`
     );
+
+    await apiErrorHandler(response, 'Get user request failed');
+
+    return response;
   }
 
   async getUserMe(): Promise<APIResponse> {
-    return await this.request.get(this.url + apiEndpoints.userUrl + '/me', {
+    const response = await this.request.get(apiEndpoints.userUrl + '/me', {
       headers: { 'Content-Type': 'application/json' }
     });
+
+    await apiErrorHandler(response, 'Get user me request failed');
+
+    return response;
   }
 }
