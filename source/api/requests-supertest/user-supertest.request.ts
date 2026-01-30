@@ -3,22 +3,19 @@ import { apiEndpoints } from '@_source/api/utils/endpoints.util';
 import { Response } from 'supertest';
 
 export class UserRequestSuperTest extends BaseSuperTest {
-  constructor(
-    protected token?: string,
-    protected baseUrl?: string
-  ) {
-    super(token, baseUrl);
+  constructor(protected token?: string) {
+    super(token);
   }
 
   async getAllUsers(): Promise<Response> {
-    return await this.get({ endpoint: apiEndpoints.usersUrl });
+    return await this.requestApi.get(apiEndpoints.usersUrl);
   }
 
   async getUser(userId: string): Promise<Response> {
-    return await this.get({ endpoint: apiEndpoints.usersUrl + `/${userId}` });
+    return await this.requestApi.get(apiEndpoints.usersUrl + `/${userId}`);
   }
 
   async getUserMe(): Promise<Response> {
-    return await this.get({ endpoint: apiEndpoints.userUrl + '/me' });
+    return await this.requestApi.get(apiEndpoints.userUrl + '/me');
   }
 }

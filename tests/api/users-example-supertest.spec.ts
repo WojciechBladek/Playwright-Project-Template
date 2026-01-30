@@ -66,7 +66,7 @@ test.describe(
 
         // Assert
         expect
-          .soft(200, 'Account should be not authorized')
+          .soft(200, 'Account should be authorized')
           .toEqual(response.statusCode);
       }
     );

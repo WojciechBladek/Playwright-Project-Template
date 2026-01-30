@@ -4,14 +4,13 @@ import { apiEndpoints } from '@_source/api/utils/endpoints.util';
 import { Response } from 'supertest';
 
 export class LoginRequestSuperTest extends BaseSuperTest {
-  constructor(protected baseUrl?: string) {
-    super(baseUrl);
+  constructor() {
+    super();
   }
 
   async login(loginData: LoginUserModelApi): Promise<Response> {
-    return await this.post({
-      endpoint: apiEndpoints.authLoginUrl,
-      payload: loginData
-    });
+    return await this.requestApi
+      .post(apiEndpoints.authLoginUrl)
+      .send(loginData);
   }
 }
