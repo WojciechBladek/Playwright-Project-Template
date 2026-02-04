@@ -1,6 +1,6 @@
-import { LoaderElement } from '@_source/UI/elements/loader-element.decorator';
-import { waitUntilElementIsVisible } from '@_source/UI/helpers/wait-for-element.helper';
-import { Locator, Page } from 'node_modules/@playwright/test';
+import { LoaderElement } from '@_source/UI/elements/loader-element.decorator.js';
+import { waitUntilElementIsVisible } from '@_source/UI/helpers/wait-for-element.helper.js';
+import { Locator, Page } from '@playwright/test';
 
 /**
  * Example component

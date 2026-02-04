@@ -1,7 +1,7 @@
-import { BASE_API_URL } from '@_config/env.config';
-import { LoginUserModelApi } from '@_source/api/models/login.api.model';
-import { LoginRequest } from '@_source/api/requests/login.request';
-import { testUser1_Api } from '@_source/api/test-data/user.data';
+import { BASE_API_URL } from '@_config/env.config.js';
+import { LoginUserModelApi } from '@_source/api/models/login.api.model.js';
+import { LoginRequest } from '@_source/api/requests/login.request.js';
+import { testUser1_Api } from '@_source/api/test-data/user.data.js';
 import { APIRequestContext, request as newRequest } from '@playwright/test';
 
 export async function getAuthorizationRequest(

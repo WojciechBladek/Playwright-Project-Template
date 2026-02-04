@@ -1,6 +1,6 @@
-import { prepareRandomUserData } from '@_source/UI/factories/user.factory';
-import { RegisterUserModelUi } from '@_source/UI/models/user.model';
-import { expect, test } from '@_source/merge.fixture';
+import { prepareRandomUserData } from '@_source/UI/factories/user.factory.js';
+import { RegisterUserModelUi } from '@_source/UI/models/user.model.js';
+import { expect, test } from '@_source/merge.fixture.js';
 
 test.describe(
   'Create new user',

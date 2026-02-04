@@ -1,4 +1,4 @@
-import { RegisterUserModelUi } from '@_source/UI/models/user.model';
+import { RegisterUserModelUi } from '@_source/UI/models/user.model.js';
 import { faker } from '@faker-js/faker/locale/en';
 
 export function prepareRandomUserData(): RegisterUserModelUi {

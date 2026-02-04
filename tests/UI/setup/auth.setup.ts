@@ -1,7 +1,7 @@
 import { STORAGE_STATE_PATH } from '@_pw-config';
-import { delay } from '@_source/UI/helpers/delay.helper';
-import { testUser1_Ui } from '@_source/UI/test-data/user.data';
-import { expect, test as setup } from '@_source/merge.fixture';
+import { delay } from '@_source/UI/helpers/delay.helper.js';
+import { testUser1_Ui } from '@_source/UI/test-data/user.data.js';
+import { expect, test as setup } from '@_source/merge.fixture.js';
 
 /**
  * Use commented code if need get api token when login on UI

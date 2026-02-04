@@ -1,8 +1,8 @@
-import { MainMenuComponent } from '@_source/UI/components/main-menu.component';
-import { safeHiddenValuesFill } from '@_source/UI/helpers/safe-fill.helper';
-import { waitUntilElementIsVisible } from '@_source/UI/helpers/wait-for-element.helper';
-import { LoginModelUi } from '@_source/UI/models/user.model';
-import { BasePage } from '@_source/UI/pages/base.page';
+import { MainMenuComponent } from '@_source/UI/components/main-menu.component.js';
+import { safeHiddenValuesFill } from '@_source/UI/helpers/safe-fill.helper.js';
+import { waitUntilElementIsVisible } from '@_source/UI/helpers/wait-for-element.helper.js';
+import { LoginModelUi } from '@_source/UI/models/user.model.js';
+import { BasePage } from '@_source/UI/pages/base.page.js';
 import { Locator, Page } from '@playwright/test';
 
 export class LoginPage extends BasePage {

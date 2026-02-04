@@ -1,4 +1,4 @@
-import { ButtonElement } from '@_source/UI/elements/button-element.decorator';
+import { ButtonElement } from '@_source/UI/elements/button-element.decorator.js';
 import { Page } from 'playwright';
 
 /**

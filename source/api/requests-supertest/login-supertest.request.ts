@@ -1,6 +1,6 @@
-import { LoginUserModelApi } from '@_source/api/models/login.api.model';
-import { BaseSuperTest } from '@_source/api/requests-supertest/base-supertest';
-import { apiEndpoints } from '@_source/api/utils/endpoints.util';
+import { LoginUserModelApi } from '@_source/api/models/login.api.model.js';
+import { BaseSuperTest } from '@_source/api/requests-supertest/base-supertest.js';
+import { apiEndpoints } from '@_source/api/utils/endpoints.util.js';
 import { Response } from 'supertest';
 
 export class LoginRequestSuperTest extends BaseSuperTest {

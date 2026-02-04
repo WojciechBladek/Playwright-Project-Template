@@ -1,12 +1,12 @@
+import { BASE_URL } from '@_config/env.config.js';
 import { defineConfig, devices } from '@playwright/test';
-import { BASE_URL } from 'config/env.config';
 import * as path from 'path';
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export const STORAGE_STATE_PATH = path.join(__dirname, 'tmp/session.json');
-export const API_TOKEN_PATH = path.join(__dirname, 'tmp/api-token.json');
+export const STORAGE_STATE_PATH = path.join(path.resolve(), 'tmp/session.json');
+export const API_TOKEN_PATH = path.join(path.resolve(), 'tmp/api-token.json');
 export const RESPONSE_TIMEOUT = 10_000;
 
 export const WAIT_FOR_TIMEOUT = 10_000;

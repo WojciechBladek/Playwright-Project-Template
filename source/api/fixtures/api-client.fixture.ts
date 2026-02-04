@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { LoginUserModelApi } from '@_source/api/models/login.api.model';
-import { BaseRequest } from '@_source/api/requests/base-request';
-import { getAuthorizationRequest } from '@_source/api/utils/generate-token.util';
+import { LoginUserModelApi } from '@_source/api/models/login.api.model.js';
+import { BaseRequest } from '@_source/api/requests/base-request.js';
+import { getAuthorizationRequest } from '@_source/api/utils/generate-token.util.js';
 import { test as base } from '@playwright/test';
 
 /** 

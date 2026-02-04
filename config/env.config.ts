@@ -1,6 +1,6 @@
+import Logger from '@_logger/Logger.js';
 import * as dotenv from 'dotenv';
 import * as fs from 'fs';
-import Logger from 'logger/Logger';
 
 export enum environments {
   local = 'local',

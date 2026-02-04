@@ -1,6 +1,6 @@
-import { HealthRequest } from '@_source/api/requests/health.request';
-import { UserRequest } from '@_source/api/requests/user.request';
-import { getAuthorizationRequest } from '@_source/api/utils/generate-token.util';
+import { HealthRequest } from '@_source/api/requests/health.request.js';
+import { UserRequest } from '@_source/api/requests/user.request.js';
+import { getAuthorizationRequest } from '@_source/api/utils/generate-token.util.js';
 // import { getApiTokenFromFile } from '@_source/api/utils/get-token-from-file.util';
 import { test as baseTest } from '@playwright/test';
 

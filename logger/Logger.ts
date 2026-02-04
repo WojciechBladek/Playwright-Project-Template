@@ -1,7 +1,7 @@
 import * as path from 'path';
 import winston from 'winston';
 
-const logsDir = path.join(__dirname, '../../logs');
+const logsDir = path.join(path.resolve(), 'logger/logs');
 
 /**
  * The Logger module provides a centralized logging mechanism using Winston.

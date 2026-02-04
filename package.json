@@ -1,7 +1,7 @@
 {
   "name": "project-playwright-typescript",
   "version": "1.0.0",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "npx playwright test",
     "test:headed": "npm run test --headed",
@@ -18,8 +18,7 @@
     "pw:update-browsers": "npx playwright install",
     "pw:check-version": "npx playwright --version",
     "pw:outdated": "npx npm outdated @playwright/test",
-    "prepare": "husky",
-    "display_report": "npx playwright show-report"
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "Wojciech Błądek",
@@ -30,7 +29,7 @@
     "@faker-js/faker": "^10.0.0",
     "@playwright/test": "^1.58.0",
     "@trivago/prettier-plugin-sort-imports": "^6.0.0",
-    "@types/node": "^24.10.1",
+    "@types/node": "^25.2.0",
     "@types/uuid": "^11.0.0",
     "@typescript-eslint/eslint-plugin": "^8.29.1",
     "@typescript-eslint/parser": "^8.29.1",
@@ -39,7 +38,7 @@
     "eslint-plugin-playwright": "^2.2.2",
     "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-unused-imports": "^4.2.0",
-    "globals": "^16.4.0",
+    "globals": "^17.3.0",
     "prettier": "^3.6.2",
     "supertest": "^7.2.2",
     "typescript-eslint": "^8.46.0"
@@ -52,7 +51,7 @@
     "dotenv": "^17.2.3",
     "glob": "^13.0.0",
     "husky": "^9.1.7",
-    "npm": "^11.6.3",
+    "npm": "^11.9.0",
     "uuid": "^13.0.0",
     "winston": "^3.18.3",
     "xlsx": "^0.18.5"

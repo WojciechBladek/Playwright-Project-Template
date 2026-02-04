@@ -1,4 +1,4 @@
-import { test } from '@_source/merge.fixture';
+import { test } from '@_source/merge.fixture.js';
 
 /**
  * Create example home page smoke tests

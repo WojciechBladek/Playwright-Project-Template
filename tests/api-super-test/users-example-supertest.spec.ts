@@ -1,6 +1,6 @@
-import { UserRequestSuperTest } from '@_source/api/requests-supertest/user-supertest.request';
-import { getTokenSuperTest } from '@_source/api/utils/generate-token-supertest.util';
-import { expect, test } from '@_source/merge.fixture';
+import { UserRequestSuperTest } from '@_source/api/requests-supertest/user-supertest.request.js';
+import { getTokenSuperTest } from '@_source/api/utils/generate-token-supertest.util.js';
+import { expect, test } from '@_source/merge.fixture.js';
 
 /*
 Example simple api test scenario

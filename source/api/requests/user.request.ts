@@ -1,6 +1,6 @@
-import { BaseRequest } from '@_source/api/requests/base-request';
-import { apiErrorHandler } from '@_source/api/utils/api-error-handler.util';
-import { apiEndpoints } from '@_source/api/utils/endpoints.util';
+import { BaseRequest } from '@_source/api/requests/base-request.js';
+import { apiErrorHandler } from '@_source/api/utils/api-error-handler.util.js';
+import { apiEndpoints } from '@_source/api/utils/endpoints.util.js';
 import { APIRequestContext, APIResponse } from '@playwright/test';
 
 export class UserRequest extends BaseRequest {

@@ -1,6 +1,6 @@
+import Logger from '@_logger/Logger.js';
 import * as fs from 'fs';
 import { Stats, promises as fsp } from 'fs';
-import Logger from 'logger/Logger';
 
 /*
 The module contains ready-made methods 

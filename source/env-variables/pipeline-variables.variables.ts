@@ -1,4 +1,4 @@
-import { checkoutEnvVariableForPipeline } from '@_config/env.config';
+import { checkoutEnvVariableForPipeline } from '@_config/env.config.js';
 
 /**
  * Example of use

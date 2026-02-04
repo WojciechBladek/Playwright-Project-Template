@@ -1,6 +1,6 @@
-import { LoginUserModelApi } from '@_source/api/models/login.api.model';
-import { LoginRequestSuperTest } from '@_source/api/requests-supertest/login-supertest.request';
-import { testUser1_Api } from '@_source/api/test-data/user.data';
+import { LoginUserModelApi } from '@_source/api/models/login.api.model.js';
+import { LoginRequestSuperTest } from '@_source/api/requests-supertest/login-supertest.request.js';
+import { testUser1_Api } from '@_source/api/test-data/user.data.js';
 
 export async function getTokenSuperTest(
   loginData?: LoginUserModelApi

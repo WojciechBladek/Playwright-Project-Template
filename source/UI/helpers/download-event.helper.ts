@@ -1,4 +1,4 @@
-import { waitUntilElementIsVisible } from '@_source/UI/helpers/wait-for-element.helper';
+import { waitUntilElementIsVisible } from '@_source/UI/helpers/wait-for-element.helper.js';
 import { Download, Locator, Page } from '@playwright/test';
 import * as path from 'path';
 

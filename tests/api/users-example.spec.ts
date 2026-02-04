@@ -1,8 +1,11 @@
-import Logger from '@_logger/Logger';
-import { LoginUserModelApi } from '@_source/api/models/login.api.model';
-import { UserRequest } from '@_source/api/requests/user.request';
-import { testUser1_Api, testUser2_Api } from '@_source/api/test-data/user.data';
-import { expect, test } from '@_source/merge.fixture';
+import Logger from '@_logger/Logger.js';
+import { LoginUserModelApi } from '@_source/api/models/login.api.model.js';
+import { UserRequest } from '@_source/api/requests/user.request.js';
+import {
+  testUser1_Api,
+  testUser2_Api
+} from '@_source/api/test-data/user.data.js';
+import { expect, test } from '@_source/merge.fixture.js';
 
 /*
 Example simple api test scenario

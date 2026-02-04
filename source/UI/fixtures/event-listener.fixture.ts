@@ -13,7 +13,6 @@ export const eventListener = baseTest.extend({
 
     await use(page);
 
-    // eslint-disable-next-line playwright/no-standalone-expect
     expect
       .soft(errors, `There were response errors:\n${errors.join('\n')}`)
       .toHaveLength(0);

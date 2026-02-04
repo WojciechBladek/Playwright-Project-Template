@@ -1,6 +1,6 @@
-import Logger from '@_logger/Logger';
-import { delay } from '@_source/UI/helpers/delay.helper';
-import { waitUntilElementIsVisible } from '@_source/UI/helpers/wait-for-element.helper';
+import Logger from '@_logger/Logger.js';
+import { delay } from '@_source/UI/helpers/delay.helper.js';
+import { waitUntilElementIsVisible } from '@_source/UI/helpers/wait-for-element.helper.js';
 import { Page, expect } from '@playwright/test';
 
 export class BasePage {

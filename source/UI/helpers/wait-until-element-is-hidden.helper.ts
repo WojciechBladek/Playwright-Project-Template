@@ -1,4 +1,4 @@
-import Logger from '@_logger/Logger';
+import Logger from '@_logger/Logger.js';
 import { WAIT_FOR_TIMEOUT } from '@_pw-config';
 import { getCallerInfo } from '@_source/UI/helpers/get-caller-info.helper';
 import { Locator } from '@playwright/test';

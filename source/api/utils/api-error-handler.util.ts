@@ -1,5 +1,5 @@
-import Logger from '@_logger/Logger';
-import { stringifyJsonData } from '@_source/utils/json-handler.util';
+import Logger from '@_logger/Logger.js';
+import { stringifyJsonData } from '@_source/utils/json-handler.util.js';
 import { APIResponse } from '@playwright/test';
 
 export async function apiErrorHandler(

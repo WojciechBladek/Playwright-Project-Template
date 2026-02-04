@@ -1,4 +1,4 @@
-import { BASE_API_URL } from '@_config/env.config';
+import { BASE_API_URL } from '@_config/env.config.js';
 import { API_TOKEN_PATH } from '@_pw-config';
 import { APIRequestContext, request as newRequest } from '@playwright/test';
 import * as fs from 'fs';
