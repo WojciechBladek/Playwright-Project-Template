@@ -15,7 +15,7 @@ test.describe(
     }
   },
   () => {
-    test('Get all users', { tag: ['@API', '@USERS'] }, async () => {
+    test('Get all users', { tag: ['@API-SUPERTEST', '@USERS'] }, async () => {
       // Arrange
       const userRequest = new UserRequestSuperTest();
       const expectedNotEmptyBody = 1;
@@ -39,7 +39,7 @@ test.describe(
 
     test(
       'Get userMe - non-logged',
-      { tag: ['@API', '@USERS', '@NON-LOGGED'] },
+      { tag: ['@API-SUPERTEST', '@USERS', '@NON-LOGGED'] },
       async () => {
         // Arrange
         const userRequest = new UserRequestSuperTest();
@@ -56,7 +56,7 @@ test.describe(
 
     test(
       'Get userMe - logged',
-      { tag: ['@API', '@USERS', '@LOGGED'] },
+      { tag: ['@API-SUPERTEST', '@USERS', '@LOGGED'] },
       async () => {
         // Arrange
         const userRequest = new UserRequestSuperTest(await getTokenSuperTest());

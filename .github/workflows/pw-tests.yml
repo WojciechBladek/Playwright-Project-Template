@@ -1,29 +1,26 @@
 name: Playwright Tests
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
   workflow_dispatch:
     inputs:
       run_all:
         description: 'Run ALL tests'
         required: false
-        default: false
+        default: true
         type: boolean
-  
+
       project:
         description: 'Select project'
         required: false
         type: choice
         options:
           - api
+          - api-super-test
           - UI-Non-Logged
           - UI-Logged
           - E2E
           - INTEGRATION
           - SMOKE
-                  
+
 permissions:
   contents: read
   checks: write
@@ -40,11 +37,11 @@ jobs:
           node-version: 22.21.1
           cache: 'npm'
           registry-url: 'https://npm.pkg.github.com'
-          
+
       - name: Get installed Playwright version
         id: playwright-version
         run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').packages['node_modules/@playwright/test'].version)")" >> $GITHUB_ENV
-     
+
       - name: Cache playwright binaries
         uses: actions/cache@v4
         id: playwright-cache
@@ -52,7 +49,7 @@ jobs:
           path: |
             ~/.cache/ms-playwright
           key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
-     
+
       - name: Cache node_modules
         uses: actions/cache@v4
         id: node-cache
@@ -60,22 +57,22 @@ jobs:
           path: |
             node_modules
           key: node_modules-${{ hashFiles('package-lock.json') }}
-          
+
       - name: Install dependencies
         run: npm install
-        
+
       - name: Install Playwright Browsers
         if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps
-        
+
       - name: Run ALL tests
         if: ${{ github.event.inputs.run_all == 'true' }}
         run: npx playwright test
-       
+
       - name: Run selected project
         if: ${{ github.event.inputs.run_all != 'true' }}
         run: npx playwright test --project="${{ github.event.inputs.project }}"
-       
+
       - name: Archive test results
         if: success() || failure()
         uses: actions/upload-artifact@v4
@@ -84,13 +81,13 @@ jobs:
           path: |
             playwright-report/**/*.*
             test-results/**/*.*
-      
+
       - name: Publish test report
         if: success() || failure()
         uses: mikepenz/action-junit-report@v4
         with:
           report_paths: 'xml_test_report.xml'
-      
+
       - name: Save cache always
         id: save-playwright-cache
         if: always()

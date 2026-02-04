@@ -45,6 +45,11 @@ export default defineConfig({
       testDir: 'tests/api'
     },
     {
+      name: 'api-super-test',
+      dependencies: ['health'],
+      testDir: 'tests/api-super-test'
+    },
+    {
       name: 'UI-Non-Logged',
       grepInvert: /@logged/,
       testDir: 'tests/UI',
