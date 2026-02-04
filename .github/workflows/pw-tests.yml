@@ -89,7 +89,7 @@ jobs:
         if: success() || failure()
         uses: mikepenz/action-junit-report@v4
         with:
-          report_paths: './playwright-report/results.xml'
+          report_paths: 'xml_test_report.xml'
       
       - name: Save cache always
         id: save-playwright-cache
