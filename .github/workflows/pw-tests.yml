@@ -74,7 +74,7 @@ jobs:
        
       - name: Run selected project
         if: ${{ github.event.inputs.run_all != 'true' }}
-        run: npx playwright test --project="${{ github.event.inputs.project }}
+        run: npx playwright test --project="${{ github.event.inputs.project }}"
        
       - name: Archive test results
         if: success() || failure()
