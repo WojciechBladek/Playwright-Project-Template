@@ -13,8 +13,8 @@ on:
         required: false
         type: choice
         options:
-          - api
-          - api-super-test
+          - API
+          - API-SUPER-TEST
           - UI-Non-Logged
           - UI-Logged
           - E2E
