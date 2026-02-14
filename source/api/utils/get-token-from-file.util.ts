@@ -10,7 +10,7 @@ in to the UI and
 want to use the same token in API tests.
 */
 
-export function loginDataFile(path: string): string {
+function loginDataFile(path: string): string {
   try {
     const rawData = fs.readFileSync(path, { encoding: 'utf8' });
     return rawData;

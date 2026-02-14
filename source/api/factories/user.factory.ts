@@ -1,4 +1,4 @@
-import { RegisterUserModelApi } from '@_source/api/models/login.api.model.js';
+import { RegisterUserModelApi } from '@_api_source/models/login.api.model.js';
 import { faker } from '@faker-js/faker/locale/en';
 
 export function prepareRandomUserData(): RegisterUserModelApi {

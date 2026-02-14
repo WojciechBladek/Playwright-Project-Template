@@ -7,11 +7,13 @@
     "resolveJsonModule": true,
     "types": ["node", "@playwright/test"],
     "paths": {
-      "@_source/*": ["./source/*"],
+      "@_merge_fixtures_source": ["./source/merge.fixture.ts"],
       "@_pw-config": ["./playwright.config.ts"],
       "@_config/*": ["./config/*"],
+      "@_common_source/*": ["./source/common/*"],
       "@_logger/*": ["./logger/*"],
-      "@api_/*": ["./source/utils/api/*"],
+      "@_api_source/*": ["./source/api/*"],
+      "@_ui_source/*": ["./source/UI/*"],
       "*": ["./*"]
     }
   },

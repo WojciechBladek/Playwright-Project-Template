@@ -1,5 +1,5 @@
 /* eslint-disable playwright/no-standalone-expect */
-import { expect, test as health } from '@_source/merge.fixture.js';
+import { expect, test as health } from '@_merge_fixtures_source';
 
 /**
  * Create health checks, this is example health checkout

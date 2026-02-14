@@ -1,7 +1,7 @@
-import { LoginUserModelApi } from '@_source/api/models/login.api.model.js';
-import { BaseRequest } from '@_source/api/requests/base-request.js';
-import { apiThrowErrorHandler } from '@_source/api/utils/api-error-handler.util.js';
-import { apiEndpoints } from '@_source/api/utils/endpoints.util.js';
+import { LoginUserModelApi } from '@_api_source/models/login.api.model.js';
+import { BaseRequest } from '@_api_source/requests/base-request.js';
+import { apiErrorHandler } from '@_api_source/utils/api-error-handler.util.js';
+import { apiEndpoints } from '@_api_source/utils/endpoints.util.js';
 import { APIRequestContext, APIResponse } from '@playwright/test';
 
 export class LoginRequest extends BaseRequest {
@@ -13,9 +13,7 @@ export class LoginRequest extends BaseRequest {
     const response = await this.request.post(apiEndpoints.authLoginUrl, {
       data: loginData
     });
-
-    await apiThrowErrorHandler(response, "Can't generate authorization header");
-
+    await apiErrorHandler(response);
     return response;
   }
 }

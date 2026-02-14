@@ -1,6 +1,7 @@
-import Logger from '@_logger/Logger.js';
 import * as dotenv from 'dotenv';
 import * as fs from 'fs';
+import Logger from 'logger/Logger.js';
+import path from 'path';
 
 export enum environments {
   local = 'local',
@@ -15,7 +16,8 @@ function defineEnv(): void {
   // If need to change env from uat just change uat to prod in defaultEnvironment variable
   const defaultEnvironment = environments.local;
   const environment = process.env.ENVIRONMENT ?? defaultEnvironment;
-  const envPath = `.env.${environment}`;
+  const envPath = path.resolve(process.cwd(), `.env.${environment}`);
+
   dotenv.config({ path: envPath, quiet: true });
 
   if (!fs.existsSync(envPath)) {
@@ -57,6 +59,8 @@ export const USER_EMAIL_UI = requireEnvVariable('USER_EMAIL_UI');
 export function checkoutEnvVariableForPipeline(
   envVariable: string
 ): string | undefined {
+  defineEnv();
+
   const envVariableValue = process.env[envVariable];
   if (envVariableValue === undefined) {
     Logger.warn('');

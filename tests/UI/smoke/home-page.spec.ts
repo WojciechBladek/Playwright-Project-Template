@@ -1,4 +1,4 @@
-import { test } from '@_source/merge.fixture.js';
+import { test } from '@_merge_fixtures_source';
 
 /**
  * Create example home page smoke tests
@@ -8,7 +8,7 @@ import { test } from '@_source/merge.fixture.js';
 test.describe(
   'Home page - smoke tests',
   {
-    tag: ['@SMOKE']
+    tag: ['@SMOKE', '@LOGGED']
   },
   () => {
     // eslint-disable-next-line playwright/expect-expect, @typescript-eslint/no-unused-vars

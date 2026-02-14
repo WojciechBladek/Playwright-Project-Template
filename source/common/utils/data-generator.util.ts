@@ -15,7 +15,7 @@ export function generateValidNIP(): string {
     digits.reduce((sum, digit, index) => sum + digit * weights[index], 0) % 11;
 
   if (checksum === 10) {
-    return this.generateValidNIP();
+    return generateValidNIP();
   } else {
     digits.push(checksum);
     return digits.join('');
@@ -45,7 +45,7 @@ export function generateRandomString(length: number): string {
 }
 
 export function generateRandomEmail(prefix = '@test.com'): string {
-  const email = `test${this.generateRandomString(20)}${prefix}`;
+  const email = `test${generateRandomString(20)}${prefix}`;
   return email;
 }
 

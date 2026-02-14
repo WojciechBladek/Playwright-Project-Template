@@ -1,6 +1,8 @@
+import {
+  waitUntilElementIsHidden,
+  waitUntilElementIsVisible
+} from '@_common_source/helpers/element.helper.js';
 import Logger from '@_logger/Logger.js';
-import { waitUntilElementIsVisible } from '@_source/UI/helpers/wait-for-element.helper.js';
-import { waitUntilElementIsHidden } from '@_source/UI/helpers/wait-until-element-is-hidden.helper.js';
 import { Locator, Page } from 'playwright';
 
 /**

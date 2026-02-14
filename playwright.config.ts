@@ -1,20 +1,21 @@
-import { BASE_URL } from '@_config/env.config.js';
 import { defineConfig, devices } from '@playwright/test';
+import { BASE_URL } from 'config/env.config.js';
 import * as path from 'path';
 
 /**
  * See https://playwright.dev/docs/test-configuration.
+ *
  */
-export const STORAGE_STATE_PATH = path.join(path.resolve(), 'tmp/session.json');
-export const API_TOKEN_PATH = path.join(path.resolve(), 'tmp/api-token.json');
-export const RESPONSE_TIMEOUT = 10_000;
+
+export const STORAGE_STATE_PATH = path.resolve('tmp/session.json');
+export const API_TOKEN_PATH = path.resolve('tmp/api-token.json');
 
 export const WAIT_FOR_TIMEOUT = 10_000;
 export const WAIT_FOR_TIMEOUT_SHORT = 2_500;
 
 export default defineConfig({
   testDir: './tests',
-  // globalSetup: 'config/global.setup.ts',
+  globalSetup: 'config/global.setup.ts',
   timeout: 60_000,
   expect: { timeout: 10_000 },
   fullyParallel: true,
@@ -40,18 +41,18 @@ export default defineConfig({
       testMatch: '*.health.ts'
     },
     {
-      name: 'api',
+      name: 'API',
       dependencies: ['health'],
       testDir: 'tests/api'
     },
     {
-      name: 'api-super-test',
+      name: 'API-SUPER-TEST',
       dependencies: ['health'],
       testDir: 'tests/api-super-test'
     },
     {
       name: 'UI-Non-Logged',
-      grepInvert: /@logged/,
+      grepInvert: /@LOGGED/,
       testDir: 'tests/UI',
       use: {
         ...devices['Desktop Chrome']
@@ -64,7 +65,7 @@ export default defineConfig({
     },
     {
       name: 'UI-Logged',
-      grep: /@logged/,
+      grep: /@LOGGED/,
       testDir: 'tests/UI',
       dependencies: ['setup'],
       use: {

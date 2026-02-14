@@ -1,5 +1,5 @@
+import { stringifyJsonData } from '@_common_source/utils/json-files.util.js';
 import Logger from '@_logger/Logger.js';
-import { stringifyJsonData } from '@_source/utils/json-handler.util.js';
 import { APIResponse } from '@playwright/test';
 
 export async function apiErrorHandler(
@@ -7,6 +7,7 @@ export async function apiErrorHandler(
   customMessage?: string
 ): Promise<void> {
   if (!response.ok()) {
+    Logger.error('🔥 API ERROR DETECTED');
     let responseBody: string;
 
     try {

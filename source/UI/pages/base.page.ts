@@ -1,6 +1,6 @@
+import { delay } from '@_common_source/helpers/delay.helper.js';
+import { waitUntilElementIsVisible } from '@_common_source/helpers/element.helper.js';
 import Logger from '@_logger/Logger.js';
-import { delay } from '@_source/UI/helpers/delay.helper.js';
-import { waitUntilElementIsVisible } from '@_source/UI/helpers/wait-for-element.helper.js';
 import { Page, expect } from '@playwright/test';
 
 export class BasePage {
@@ -35,7 +35,7 @@ export class BasePage {
     try {
       await this.page.evaluate(() => {
         const selector = document.querySelector('[class="fc-consent-root"]');
-        selector.remove();
+        selector?.remove();
       });
       await delay(1_000);
     } catch {

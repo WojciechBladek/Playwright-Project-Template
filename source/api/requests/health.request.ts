@@ -1,5 +1,5 @@
-import { BaseRequest } from '@_source/api/requests/base-request.js';
-import { apiErrorHandler } from '@_source/api/utils/api-error-handler.util.js';
+import { BaseRequest } from '@_api_source/requests/base-request.js';
+import { apiErrorHandler } from '@_api_source/utils/api-error-handler.util.js';
 import { APIRequestContext, APIResponse } from '@playwright/test';
 
 export class HealthRequest extends BaseRequest {
@@ -9,8 +9,8 @@ export class HealthRequest extends BaseRequest {
 
   async get(): Promise<APIResponse> {
     const response = await this.request.get('/');
-    await apiErrorHandler(response, 'Health check failed');
 
+    await apiErrorHandler(response);
     return response;
   }
 }

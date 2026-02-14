@@ -8,6 +8,11 @@ export const parseDate = (dateStr: string): Date => {
   return new Date(year, month - 1, day);
 };
 
+export function reverseDate(date: string, separator: '.'): string {
+  const [year, month, day] = date.split('-');
+  return `${day}${separator}${month}${separator}${year}`;
+}
+
 export function parseCustomDateString(dateTimeStr: string): Date | null {
   if (!dateTimeStr || typeof dateTimeStr !== 'string') return null;
 

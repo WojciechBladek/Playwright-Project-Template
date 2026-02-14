@@ -1,11 +1,11 @@
-import { prepareRandomUserData } from '@_source/UI/factories/user.factory.js';
-import { RegisterUserModelUi } from '@_source/UI/models/user.model.js';
-import { expect, test } from '@_source/merge.fixture.js';
+import { expect, test } from '@_merge_fixtures_source';
+import { prepareRandomUserData } from '@_ui_source/factories/user.factory.js';
+import { RegisterUserModelUi } from '@_ui_source/models/user.model.js';
 
 test.describe(
   'Create new user',
   {
-    tag: ['@INTEGRATION']
+    tag: ['@INTEGRATION', '@NON-LOGGED']
   },
   () => {
     test('Register user', async ({ registerPage }) => {

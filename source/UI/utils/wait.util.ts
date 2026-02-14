@@ -16,7 +16,7 @@ export interface WaitParams {
   timeout?: number}
   @example
   const responsePromise = waitForResponse({
-  page: this.page,
+  page: page,
   url: ENDPOINTS.wholesaleRoutes,
   method: 'POST',
   status: 201});
@@ -41,27 +41,5 @@ export async function waitForResponse({
       );
     },
     { timeout: timeout ? timeout : 10_000 }
-  );
-}
-
-export async function waitForResponseWithLargeTimeout(
-  page: Page,
-  url: string,
-  method?: string,
-  options: {
-    status?: number;
-    timeout?: number;
-  } = {}
-): Promise<Response> {
-  const { status, timeout = 25_000 } = options;
-  return page.waitForResponse(
-    (response) => {
-      return (
-        response.url().includes(url) &&
-        (!method || response.request().method() === method) &&
-        (!status || response.status() === status)
-      );
-    },
-    { timeout: timeout }
   );
 }

@@ -4,10 +4,14 @@ import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-
 export default [
   {
-    ignores: ['package-lock.json', 'playwright-report/**', 'test-results/**', 'pipelines']
+    ignores: [
+      'package-lock.json',
+      'playwright-report/**',
+      'test-results/**',
+      'pipelines'
+    ]
   },
   { files: ['**/*.ts'] },
   { languageOptions: { globals: globals.node } },
@@ -16,21 +20,21 @@ export default [
   {
     rules: {
       'no-console': 'error',
-      '@typescript-eslint/explicit-function-return-type': 'error',
-    },
+      '@typescript-eslint/explicit-function-return-type': 'error'
+    }
   },
   eslintPluginPlaywright.configs['flat/recommended'],
   {
     rules: {
-      'playwright/no-nested-step': 'off',
+      'playwright/no-nested-step': 'off'
     },
     settings: {
       playwright: {
         globalAliases: {
-          test: ['setup'],
-        },
-      },
-    },
+          test: ['setup']
+        }
+      }
+    }
   },
-  eslintPluginPrettierRecommended,
+  eslintPluginPrettierRecommended
 ];

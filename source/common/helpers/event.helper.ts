@@ -1,8 +1,8 @@
-import { waitUntilElementIsVisible } from '@_source/UI/helpers/wait-for-element.helper.js';
+import { waitUntilElementIsVisible } from '@_common_source/helpers/element.helper.js';
 import { Download, Locator, Page } from '@playwright/test';
 import * as path from 'path';
 
-export async function openLinkInBrowser(
+export async function downloadFiledByLink(
   page: Page,
   clipboardContent: string
 ): Promise<Download[]> {

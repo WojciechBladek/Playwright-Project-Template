@@ -1,6 +1,6 @@
-import { safeHiddenValuesFill } from '@_source/UI/helpers/safe-fill.helper.js';
-import { RegisterUserModelUi } from '@_source/UI/models/user.model.js';
-import { BasePage } from '@_source/UI/pages/base.page.js';
+import { safeHiddenValuesFill } from '@_common_source/helpers/element-safe-fill.helper.js';
+import { RegisterUserModelUi } from '@_ui_source/models/user.model.js';
+import { BasePage } from '@_ui_source/pages/base.page.js';
 import { Locator, Page } from '@playwright/test';
 
 export class RegisterPage extends BasePage {

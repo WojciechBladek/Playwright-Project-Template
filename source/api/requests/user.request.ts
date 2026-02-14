@@ -1,6 +1,6 @@
-import { BaseRequest } from '@_source/api/requests/base-request.js';
-import { apiErrorHandler } from '@_source/api/utils/api-error-handler.util.js';
-import { apiEndpoints } from '@_source/api/utils/endpoints.util.js';
+import { BaseRequest } from '@_api_source/requests/base-request.js';
+import { apiErrorHandler } from '@_api_source/utils/api-error-handler.util.js';
+import { apiEndpoints } from '@_api_source/utils/endpoints.util.js';
 import { APIRequestContext, APIResponse } from '@playwright/test';
 
 export class UserRequest extends BaseRequest {
@@ -11,8 +11,7 @@ export class UserRequest extends BaseRequest {
   async getAllUsers(): Promise<APIResponse> {
     const response = await this.request.get(apiEndpoints.usersUrl);
 
-    await apiErrorHandler(response, 'Get all users request failed');
-
+    await apiErrorHandler(response);
     return response;
   }
 
@@ -21,8 +20,7 @@ export class UserRequest extends BaseRequest {
       apiEndpoints.usersUrl + `/${userId}`
     );
 
-    await apiErrorHandler(response, 'Get user request failed');
-
+    await apiErrorHandler(response);
     return response;
   }
 
@@ -31,7 +29,7 @@ export class UserRequest extends BaseRequest {
       headers: { 'Content-Type': 'application/json' }
     });
 
-    await apiErrorHandler(response, 'Get user me request failed');
+    await apiErrorHandler(response);
 
     return response;
   }

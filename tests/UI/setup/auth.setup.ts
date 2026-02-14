@@ -1,7 +1,7 @@
+import { delay } from '@_common_source/helpers/delay.helper.js';
+import { expect, test as setup } from '@_merge_fixtures_source';
 import { STORAGE_STATE_PATH } from '@_pw-config';
-import { delay } from '@_source/UI/helpers/delay.helper.js';
-import { testUser1_Ui } from '@_source/UI/test-data/user.data.js';
-import { expect, test as setup } from '@_source/merge.fixture.js';
+import { testUser1_Ui } from '@_ui_source/test-data/user.data.js';
 
 /**
  * Use commented code if need get api token when login on UI
@@ -9,7 +9,7 @@ import { expect, test as setup } from '@_source/merge.fixture.js';
  */
 
 setup.describe('Get UI session', () => {
-  setup('Login as Admin', async ({ page, loginPage }) => {
+  setup('Login as Admin', { tag: '@SETUP' }, async ({ page, loginPage }) => {
     try {
       // const responsePromise = page.waitForResponse('**/token*');
       await loginPage.login(testUser1_Ui);

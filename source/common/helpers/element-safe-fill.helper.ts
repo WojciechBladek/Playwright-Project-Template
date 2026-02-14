@@ -1,5 +1,5 @@
+import { waitUntilElementIsVisible } from '@_common_source/helpers/element.helper.js';
 import Logger from '@_logger/Logger.js';
-import { waitUntilElementIsVisible } from '@_source/UI/helpers/wait-for-element.helper.js';
 import { Locator } from '@playwright/test';
 
 export async function safeFill(

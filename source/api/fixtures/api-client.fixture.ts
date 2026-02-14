@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { LoginUserModelApi } from '@_source/api/models/login.api.model.js';
-import { BaseRequest } from '@_source/api/requests/base-request.js';
-import { getAuthorizationRequest } from '@_source/api/utils/generate-token.util.js';
+import { LoginUserModelApi } from '@_api_source/models/login.api.model.js';
+import { BaseRequest } from '@_api_source/requests/base-request.js';
+import { getAuthorizationRequest } from '@_api_source/utils/generate-token.util.js';
 import { test as base } from '@playwright/test';
 
 /** 
@@ -26,15 +26,13 @@ type Constructor<T> = new (...args: any[]) => T;
 export const apiClientTest = base.extend<{
   apiClient: <T extends BaseRequest>(
     classRef: Constructor<T>,
-    loginData?: LoginUserModelApi,
-    baseUrl?: string
+    loginData?: LoginUserModelApi
   ) => Promise<T>;
 }>({
   apiClient: async ({ request }, use) => {
     const apiFactory = async <T extends BaseRequest>(
       classRef: Constructor<T>,
-      loginData?: LoginUserModelApi,
-      baseUrl?: string
+      loginData?: LoginUserModelApi
     ): Promise<T> => {
       let requestApi = request;
 
@@ -43,10 +41,6 @@ export const apiClientTest = base.extend<{
       }
 
       const instance = new classRef(requestApi);
-
-      if (baseUrl) {
-        instance.url = baseUrl; //* Example how to set another base api url in fixture
-      }
 
       return instance;
     };

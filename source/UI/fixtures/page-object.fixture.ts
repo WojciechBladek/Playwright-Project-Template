@@ -1,6 +1,6 @@
-import { HomePage } from '@_source/UI/pages/home.page.js';
-import { LoginPage } from '@_source/UI/pages/login.page.js';
-import { RegisterPage } from '@_source/UI/pages/register.page.js';
+import { HomePage } from '@_ui_source/pages/home.page.js';
+import { LoginPage } from '@_ui_source/pages/login.page.js';
+import { RegisterPage } from '@_ui_source/pages/register.page.js';
 import { test as baseTest } from '@playwright/test';
 
 export interface Pages {

@@ -1,11 +1,11 @@
-import Logger from '@_logger/Logger.js';
-import { LoginUserModelApi } from '@_source/api/models/login.api.model.js';
-import { UserRequest } from '@_source/api/requests/user.request.js';
+import { LoginUserModelApi } from '@_api_source/models/login.api.model.js';
+import { UserRequest } from '@_api_source/requests/user.request.js';
 import {
   testUser1_Api,
   testUser2_Api
-} from '@_source/api/test-data/user.data.js';
-import { expect, test } from '@_source/merge.fixture.js';
+} from '@_api_source/test-data/user.data.js';
+import Logger from '@_logger/Logger.js';
+import { expect, test } from '@_merge_fixtures_source';
 
 /*
 Example simple api test scenario
@@ -22,7 +22,7 @@ test.describe(
   () => {
     test(
       'Get all users',
-      { tag: ['@API', '@USERS'] },
+      { tag: ['@API', '@USERS', '@NON-LOGGED'] },
       async ({ userRequest }) => {
         // Arrange
         const expectedNotEmptyBody = 1;
@@ -82,7 +82,7 @@ test.describe(
     for (const user of usersData) {
       test(
         `Verify user "${user.username}" - role privileges`,
-        { tag: ['@API', '@USERS', '@ROLES'] },
+        { tag: ['@API', '@USERS', '@ROLES', '@LOGGED'] },
         async ({ apiClient }) => {
           // Arrange
           Logger.info(`Verify priviligies for user: ${user.username}`);

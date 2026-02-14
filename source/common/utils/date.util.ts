@@ -6,9 +6,9 @@ The module contains ready-made methods
 for generating dates.
 */
 
-export const timeStamp = {
-  get number(): number {
-    return new Date().getTime();
+export const getTimeStamp = {
+  get number(): string {
+    return new Date().getTime().toString();
   }
 };
 
@@ -26,7 +26,7 @@ export function checkIfItExistsLongerThan(
   const oldDateAtMidnight = new Date(timestampFromDB);
   oldDateAtMidnight.setHours(0, 0, 0, 0);
 
-  const thresholdDate = this.getDateXDaysAgoAtMidnight(thresholdDateToSet);
+  const thresholdDate = getDateXDaysAgoAtMidnight(thresholdDateToSet);
 
   return oldDateAtMidnight <= thresholdDate ? true : false;
 }

@@ -1,5 +1,5 @@
-import { BaseSuperTest } from '@_source/api/requests-supertest/base-supertest.js';
-import { apiEndpoints } from '@_source/api/utils/endpoints.util.js';
+import { BaseSuperTest } from '@_api_source/requests-supertest/base-supertest.js';
+import { apiEndpoints } from '@_api_source/utils/endpoints.util.js';
 import { Response } from 'supertest';
 
 export class UserRequestSuperTest extends BaseSuperTest {
