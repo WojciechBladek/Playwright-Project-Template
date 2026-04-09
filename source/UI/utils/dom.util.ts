@@ -30,6 +30,8 @@ export async function waitForStableElement(
           subtree: true
         });
 
+        const startTime = Date.now();
+
         const checkStable = (): void => {
           const now = Date.now();
           if (now - lastMutation >= 300) {
@@ -43,7 +45,6 @@ export async function waitForStableElement(
           }
         };
 
-        const startTime = Date.now();
         checkStable();
       });
     },

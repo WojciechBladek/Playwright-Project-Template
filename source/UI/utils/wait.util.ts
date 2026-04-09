@@ -1,4 +1,4 @@
-import { Page, Response } from 'playwright';
+import { Page, Response } from '@playwright/test';
 
 export interface WaitParams {
   page: Page;

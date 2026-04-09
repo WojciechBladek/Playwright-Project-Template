@@ -1,4 +1,3 @@
-/* eslint-disable playwright/no-standalone-expect */
 import { expect, test as health } from '@_merge_fixtures_source';
 
 /**

@@ -1,27 +1,21 @@
-export function getRandomValue(number: number): number {
-  return Math.round(Math.random() * number);
-}
+export const getRandomValue = (number: number): number =>
+  Math.round(Math.random() * number);
 
-export function randomStringValue(values: string[]): string {
-  return values[Math.floor(Math.random() * values.length)];
-}
+export const randomStringValue = (values: string[]): string =>
+  values[Math.floor(Math.random() * values.length)];
 
-export function getRandomValueFromArray<T>(array: T[]): T {
-  return array[Math.round(Math.random() * (array.length - 1))];
-}
+export const getRandomValueFromArray = <T>(array: T[]): T =>
+  array[Math.floor(Math.random() * array.length)];
 
-export function getRandomArbitrary(min: number, max: number): number {
-  return Math.round(Math.random() * (max - min) + min);
-}
+export const getRandomArbitrary = (min: number, max: number): number =>
+  Math.round(Math.random() * (max - min) + min);
 
-export function getRandomArbitraryWithLimit(
+export const getRandomArbitraryWithLimit = (
   min: number,
   max: number,
   limit?: number
-): number {
-  const randomValue = Math.random() * (max - min) + min;
-
-  const roundedValue = Math.floor(randomValue);
+): number => {
+  const roundedValue = Math.floor(Math.random() * (max - min) + min);
 
   return limit ? Math.min(roundedValue, limit) : roundedValue;
-}
+};

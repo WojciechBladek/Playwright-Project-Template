@@ -3,9 +3,8 @@ interface Difference {
   differenceExpectedObject: Set<string>;
 }
 
-export function normalizeWhitespace(text: string): string {
-  return text.replace(/\s+/g, ' ').trim();
-}
+export const normalizeWhitespace = (text: string): string =>
+  text.replace(/\s+/g, ' ').trim();
 
 export function getFirstWord(input: string): string {
   try {
@@ -22,9 +21,8 @@ export function getLastWord(input: string): string {
   }
 }
 
-export function reverseString(str: string): string {
-  return str.split('').reverse().join('');
-}
+export const reverseString = (str: string): string =>
+  str.split('').reverse().join('');
 
 /**
  * This function finds and return difference in long string
@@ -40,7 +38,7 @@ export function differenceInString(
   const { differenceExpectedObject, differenceNewObject } = difference(
     expectedString,
     newString,
-    'split'
+    { useSplit: true, split: ';' }
   );
 
   return differenceNewObject.size !== 0
@@ -51,14 +49,14 @@ export function differenceInString(
 export function difference(
   expectedString: string,
   newString: string,
-  split?: string
+  options: { useSplit?: boolean; split?: string } = {}
 ): Difference {
   let expectedObject: Set<string>;
   let newObject: Set<string>;
 
-  if (split === 'split') {
-    expectedObject = new Set(expectedString.split(';'));
-    newObject = new Set(newString.split(';'));
+  if (options.useSplit) {
+    expectedObject = new Set(expectedString.split(options.split || ';'));
+    newObject = new Set(newString.split(options.split || ';'));
   } else {
     expectedObject = new Set(expectedString);
     newObject = new Set(newString);

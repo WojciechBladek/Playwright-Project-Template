@@ -1,8 +1,6 @@
 import { Locator } from '@playwright/test';
 
-export interface AssertionMap {
-  [value: string]: Locator;
-}
+export type AssertionMap = Record<string, Locator>;
 
 type AssertionFn = (locator: Locator, expectedValue: string) => Promise<void>;
 
@@ -20,11 +18,9 @@ export function isBetween(
   max: number,
   expected: number
 ): boolean | null {
-  if (!expected) {
-    return null;
-  } else {
-    return expected >= min && expected <= max;
-  }
+  if (expected == null) return null;
+
+  return expected >= min && expected <= max;
 }
 
 export function isEmpty(value: unknown): boolean {
@@ -36,9 +32,7 @@ export function isWithinTolerance(
   expected: number,
   tolerance: number
 ): boolean | null {
-  if (!expected) {
-    return null;
-  } else {
-    return actual >= expected - tolerance && actual <= expected + tolerance;
-  }
+  if (expected == null) return null;
+
+  return actual >= expected - tolerance && actual <= expected + tolerance;
 }

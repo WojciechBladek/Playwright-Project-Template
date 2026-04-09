@@ -25,19 +25,19 @@ export class RegisterPage extends BasePage {
 
     this.url = '/login';
 
-    this.registerNameInput = this.page.locator('[data-qa="signup-name"]');
-    this.registerEmailInput = this.page.locator('[data-qa="signup-email"]');
-    this.signUpButton = this.page.locator('[data-qa="signup-button"]');
+    this.registerNameInput = this.page.getByTestId('signup-name');
+    this.registerEmailInput = this.page.getByTestId('signup-email');
+    this.signUpButton = this.page.getByTestId('signup-button');
     this.genderTitleCheckboxMr = this.page.locator('#id_gender1');
-    this.passwordInput = this.page.locator('[data-qa="password"]');
-    this.firstNameInput = this.page.locator('[data-qa="first_name"]');
-    this.lastNameInput = this.page.locator('[data-qa="last_name"]');
-    this.addressInput = this.page.locator('[data-qa="address"]');
-    this.stateInput = this.page.locator('[data-qa="state"]');
-    this.cityInput = this.page.locator('[data-qa="city"]');
-    this.zipCodeInput = this.page.locator('[data-qa="zipcode"]');
-    this.mobileNumberInput = this.page.locator('[data-qa="mobile_number"]');
-    this.continueButton = this.page.locator('[data-qa="continue-button"]');
+    this.passwordInput = this.page.getByTestId('password');
+    this.firstNameInput = this.page.getByTestId('first_name');
+    this.lastNameInput = this.page.getByTestId('last_name');
+    this.addressInput = this.page.getByTestId('address');
+    this.stateInput = this.page.getByTestId('state');
+    this.cityInput = this.page.getByTestId('city');
+    this.zipCodeInput = this.page.getByTestId('zipcode');
+    this.mobileNumberInput = this.page.getByTestId('mobile_number');
+    this.continueButton = this.page.getByTestId('continue-button');
     this.daysSelect = this.page.locator('#days');
     this.monthsSelect = this.page.locator('#months');
     this.yearsSelect = this.page.locator('#years');
@@ -87,7 +87,7 @@ export class RegisterPage extends BasePage {
 
     await safeHiddenValuesFill(
       this.mobileNumberInput,
-      registerUserData.zipCode
+      registerUserData.mobilePhone
     );
     await this.mobileNumberInput.press('Enter');
 

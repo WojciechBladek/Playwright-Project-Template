@@ -2,7 +2,7 @@ import { waitUntilElementIsVisible } from '@_common_source/helpers/element.helpe
 import { Download, Locator, Page } from '@playwright/test';
 import * as path from 'path';
 
-export async function downloadFiledByLink(
+export async function downloadFileByLink(
   page: Page,
   clipboardContent: string
 ): Promise<Download[]> {
@@ -40,11 +40,11 @@ export async function downloadFile(
     const download = await downloadPromise;
     const savePath = path.resolve(
       downloadPath,
-      downloadedFileName + download.suggestedFilename()
+      (downloadedFileName ?? '') + download.suggestedFilename()
     );
     await download.saveAs(savePath);
     return savePath;
   } catch (e) {
-    throw new Error(`Failed to download or save file, "${e}"`);
+    throw new Error(`Failed to download or save file, "${e}"`, { cause: e });
   }
 }

@@ -1,8 +1,8 @@
 import { stringifyJsonData } from '@_common_source/utils/json-files.util.js';
 import { BASE_API_URL } from '@_config/env.config.js';
 import Logger from '@_logger/Logger.js';
-import TestAgent from 'node_modules/@types/supertest/lib/agent.js';
 import { Response, agent as request } from 'supertest';
+import type TestAgent from 'supertest/lib/agent.js';
 
 type RequestWithInternals = Request & {
   _data?: unknown;

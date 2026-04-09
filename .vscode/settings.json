@@ -6,6 +6,6 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit"
   },
-  "typescript.preferences.importModuleSpecifier": "non-relative",
-  "files.autoSave": "afterDelay"
+  "files.autoSave": "afterDelay",
+  "window.zoomLevel": 0.5
 }

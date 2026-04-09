@@ -1,5 +1,5 @@
 import { ButtonElement } from '@_ui_source/elements/button-element.elements.js';
-import { Page } from 'playwright';
+import { Page } from '@playwright/test';
 
 /**
  * Example component

@@ -6,9 +6,8 @@ import { Locator } from '@playwright/test';
 export async function getActiveSelectText(
   selectElement: Locator
 ): Promise<string> {
-  return await selectElement.evaluate((select: HTMLSelectElement) => {
-    const selectedIndex = select.selectedIndex;
-    return select.options[selectedIndex].text;
+  return selectElement.evaluate((select: HTMLSelectElement) => {
+    return select.options[select.selectedIndex].text;
   });
 }
 
@@ -45,13 +44,13 @@ export async function waitUntilElementIsActive(
   const locatorAttribute = await locator.getAttribute('class');
   if (locatorAttribute?.includes('is-active')) {
     return true;
-  } else {
-    Logger.error(
-      `Element: "${locator}" did not become active within ${timeout} ms`
-    );
-    Logger.info('****************************************');
-    return false;
   }
+
+  Logger.error(
+    `Element: "${locator}" did not become active within ${timeout} ms`
+  );
+  Logger.info('****************************************');
+  return false;
 }
 
 export async function waitUntilElementIsHidden(

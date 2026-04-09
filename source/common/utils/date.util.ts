@@ -28,7 +28,7 @@ export function checkIfItExistsLongerThan(
 
   const thresholdDate = getDateXDaysAgoAtMidnight(thresholdDateToSet);
 
-  return oldDateAtMidnight <= thresholdDate ? true : false;
+  return oldDateAtMidnight <= thresholdDate;
 }
 
 export function generateDateWithDaysBackFromCurrentDate(

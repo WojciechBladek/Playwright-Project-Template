@@ -4,7 +4,7 @@ import { APIResponse } from '@playwright/test';
 
 export async function apiErrorHandler(
   response: APIResponse,
-  customMessage?: string
+  options: { customMessage?: string; payload?: object } = {}
 ): Promise<void> {
   if (!response.ok()) {
     Logger.error('🔥 API ERROR DETECTED');
@@ -18,8 +18,11 @@ export async function apiErrorHandler(
       responseBody = stringifyJsonData(responseText);
     }
 
+    if (options.payload) {
+      Logger.info(`[PAYLOAD]: ${stringifyJsonData(options.payload)}`);
+    }
     Logger.error(
-      `${customMessage || 'Api request failed'}, 
+      `${options.customMessage || 'Api request failed'}, 
       [URL]: ${response.url()}
       [STATUS CODE]: ${response?.status()},
       [RESPONSE_BODY]: ${responseBody}
@@ -30,7 +33,7 @@ export async function apiErrorHandler(
 
 export async function apiThrowErrorHandler(
   response: APIResponse,
-  customMessage?: string
+  options: { customMessage?: string; payload?: object } = {}
 ): Promise<void> {
   if (!response.ok()) {
     let responseBody: string;
@@ -43,8 +46,11 @@ export async function apiThrowErrorHandler(
       responseBody = stringifyJsonData(responseText);
     }
 
+    if (options.payload) {
+      Logger.info(`[PAYLOAD]: ${stringifyJsonData(options.payload)}`);
+    }
     throw new Error(
-      `${customMessage || 'Api request failed'}, 
+      `${options.customMessage || 'Api request failed'}, 
       [URL]: ${response.url()}
       [STATUS CODE]: ${response?.status()},
       [RESPONSE_BODY]: ${responseBody}`

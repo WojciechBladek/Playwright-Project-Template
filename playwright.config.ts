@@ -33,7 +33,8 @@ export default defineConfig({
     trace: 'retain-on-first-failure',
     actionTimeout: 5_000,
     locale: 'pl-PL',
-    headless: true
+    headless: true,
+    testIdAttribute: 'data-qa'
   },
   projects: [
     {

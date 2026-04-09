@@ -1,5 +1,5 @@
+import { LoaderElement } from './loader-element.decorator.js';
 import { waitUntilElementIsVisible } from '@_common_source/helpers/element.helper.js';
-import { LoaderElement } from '@_ui_source/elements/loader-element.elements.js';
 import { Locator, Page } from 'playwright';
 
 /**
@@ -25,8 +25,10 @@ export class ButtonElement {
     try {
       await this.buttonElement.click();
       await this.loader.waitFor({ state: 'visible-and-hidden' });
-    } catch {
-      throw new Error(`Failed click on button named: "${this.buttonName}"`);
+    } catch (error) {
+      throw new Error(`Failed click on button named: "${this.buttonName}"`, {
+        cause: error
+      });
     }
   }
 }

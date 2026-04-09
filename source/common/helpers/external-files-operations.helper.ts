@@ -36,10 +36,8 @@ export const readXLSXHeaders = (
   const workbook = readXLSXFile(filePath);
   const worksheets: Record<string, object[]> = {};
 
-  for (const sheetName of workbook.SheetNames) {
-    worksheets[sheetName] = XLSX.utils.sheet_to_json(
-      workbook.Sheets[sheetName]
-    );
+  for (const name of workbook.SheetNames) {
+    worksheets[name] = XLSX.utils.sheet_to_json(workbook.Sheets[name]);
   }
   const sheet = worksheets[sheetName];
   const headers = sheet;

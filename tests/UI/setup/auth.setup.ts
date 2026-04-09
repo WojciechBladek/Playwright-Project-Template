@@ -31,7 +31,8 @@ setup.describe('Get UI session', () => {
       await page.context().storageState({ path: STORAGE_STATE_PATH });
     } catch (e) {
       throw new Error(
-        `Failed to create auth session for: ${testUser1_Ui.userEmail}, error: ${e}`
+        `Failed to create auth session for: ${testUser1_Ui.userEmail}, error: ${e}`,
+        { cause: e }
       );
     }
   });

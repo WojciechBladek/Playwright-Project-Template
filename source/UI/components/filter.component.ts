@@ -1,5 +1,5 @@
 import { waitUntilElementIsVisible } from '@_common_source/helpers/element.helper.js';
-import { LoaderElement } from '@_ui_source/elements/loader-element.elements.js';
+import { LoaderElement } from '@_ui_source/elements/loader-element.decorator.js';
 import { Locator, Page } from '@playwright/test';
 
 /**

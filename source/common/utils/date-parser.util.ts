@@ -8,10 +8,10 @@ export const parseDate = (dateStr: string): Date => {
   return new Date(year, month - 1, day);
 };
 
-export function reverseDate(date: string, separator: '.'): string {
+export const reverseDate = (date: string, separator: '.'): string => {
   const [year, month, day] = date.split('-');
   return `${day}${separator}${month}${separator}${year}`;
-}
+};
 
 export function parseCustomDateString(dateTimeStr: string): Date | null {
   if (!dateTimeStr || typeof dateTimeStr !== 'string') return null;
@@ -34,6 +34,8 @@ export function parseCustomDateString(dateTimeStr: string): Date | null {
 }
 
 export const getDateInFormatDDMMRRRR = (date: string | Date): string => {
-  const [year, month, day] = date.toString().split('-');
+  const isoString =
+    date instanceof Date ? date.toISOString().split('T')[0] : date;
+  const [year, month, day] = isoString.split('-');
   return `${day.slice(0, 2)}.${month}.${year}`;
 };

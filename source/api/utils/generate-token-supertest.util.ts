@@ -3,13 +3,10 @@ import { LoginRequestSuperTest } from '@_api_source/requests-supertest/login-sup
 import { testUser1_Api } from '@_api_source/test-data/user.data.js';
 
 export async function getTokenSuperTest(
-  loginData?: LoginUserModelApi
+  loginData: LoginUserModelApi = testUser1_Api
 ): Promise<string> {
-  loginData = loginData || testUser1_Api;
-
   const loginRequest = new LoginRequestSuperTest();
   const responseLogin = await loginRequest.login(loginData);
-  const token = responseLogin.body.accessToken;
 
-  return token;
+  return responseLogin.body.accessToken;
 }

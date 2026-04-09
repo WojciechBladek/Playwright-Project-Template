@@ -14,22 +14,18 @@ export function generateValidNIP(): string {
   const checksum =
     digits.reduce((sum, digit, index) => sum + digit * weights[index], 0) % 11;
 
-  if (checksum === 10) {
-    return generateValidNIP();
-  } else {
-    digits.push(checksum);
-    return digits.join('');
-  }
+  if (checksum === 10) return generateValidNIP();
+
+  digits.push(checksum);
+  return digits.join('');
 }
 
-export function generateRandomPhoneNumber(): string {
-  const phoneNumber = `+48${Math.floor(100000000 + Math.random() * 900000000)}`;
-  return phoneNumber;
-}
+export const generateRandomPhoneNumber = (): string =>
+  `+48${Math.floor(100000000 + Math.random() * 900000000)}`;
 
 export function generateRandomNumber(length: number): number {
-  const min = Math.pow(10, length - 1);
-  const max = Math.pow(10, length) - 1;
+  const min = 10 ** (length - 1);
+  const max = 10 ** length - 1;
 
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -37,17 +33,14 @@ export function generateRandomNumber(length: number): number {
 export function generateRandomString(length: number): string {
   const characters =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let result = '';
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * characters.length));
-  }
-  return result;
+
+  return Array.from({ length }, () =>
+    characters.charAt(Math.floor(Math.random() * characters.length))
+  ).join('');
 }
 
-export function generateRandomEmail(prefix = '@test.com'): string {
-  const email = `test${generateRandomString(20)}${prefix}`;
-  return email;
-}
+export const generateRandomEmail = (suffix = '@test.com'): string =>
+  `test${generateRandomString(20)}${suffix}`;
 
 export function generateValidPesel(): string {
   const start = new Date(1950, 0, 1);

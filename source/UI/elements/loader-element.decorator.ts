@@ -3,7 +3,7 @@ import {
   waitUntilElementIsVisible
 } from '@_common_source/helpers/element.helper.js';
 import Logger from '@_logger/Logger.js';
-import { Locator, Page } from 'playwright';
+import { Locator, Page } from '@playwright/test';
 
 /**
  * Example element
